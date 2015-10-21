@@ -46,7 +46,7 @@ public View getView(int position, View convertView, ViewGroup parent) {
         ImageView theImageView = (ImageView) convertView.findViewById(R.id.myImage);
 
         // We can set a ImageView like this
-        theImageView.setImageResource(R.drawable.zaida);
+        theImageView.setImageResource(R.drawable.noimage);
 
         return convertView;
 
