@@ -23,10 +23,10 @@ public class CreditorList extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.creditor_iou_list);
 
-
+//THIS PART BROKE
         String[]  creditors = {};
                 //converter
-        creditorAdapter = new CustomAdapter(this, creditors);
+        //creditorAdapter = new CustomAdapter(this, creditors);
 
         creditorListView = (ListView) findViewById(R.id.creditorListView);
 

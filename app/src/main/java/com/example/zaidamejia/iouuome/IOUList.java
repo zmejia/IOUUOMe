@@ -55,31 +55,19 @@ public class IOUList extends ActionBarActivity {
         int count = myDb.getDataCount();
 
         List<UserData> data = viewALlCreditors();
-
-        String[] creditorsNameList = new String[count];
-
-        int i=0;
-        for (UserData dt : data) {
-            creditorsNameList[i] = dt.getName();
-            i++;
-        }
-
-        //FIGURE OUT A WAY TO SEND THE LIST<USERDATA> INSTEAD OF THE LIST OF NAMES
         //converter
-        CustomAdapter theAdapter = new CustomAdapter(this, creditorsNameList);
-
+        CustomAdapter theAdapter = new CustomAdapter(this, data);
         ListView theListView = (ListView) findViewById(R.id.IOUListView);
-
         // Tells the ListView what data to use
         theListView.setAdapter(theAdapter);
 
         theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                String tvShowPicked = "You selected " +
+                String creditor = "You selected " +
                         String.valueOf(adapterView.getItemAtPosition(position));
 
-                Toast.makeText(IOUList.this, tvShowPicked, Toast.LENGTH_SHORT).show();
+                Toast.makeText(IOUList.this, creditor, Toast.LENGTH_SHORT).show();
 
             }
 
