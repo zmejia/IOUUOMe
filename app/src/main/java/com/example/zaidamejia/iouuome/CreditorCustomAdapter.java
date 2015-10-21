@@ -15,14 +15,9 @@ import android.widget.TextView;
 
 public class CreditorCustomAdapter extends ArrayAdapter<String> {
 
-
-
     public CreditorCustomAdapter(Context context, String[] values){
 
         super(context, R.layout.creditor_row_layout, values);
-
-
-
     }
 
 
@@ -50,7 +45,7 @@ public class CreditorCustomAdapter extends ArrayAdapter<String> {
         ImageView theImageView = (ImageView) theView.findViewById(R.id.myImage);
 
         // We can set a ImageView like this
-        theImageView.setImageResource(R.drawable.zaida);
+        theImageView.setImageResource(R.drawable.noimage);
 
         return theView;
 

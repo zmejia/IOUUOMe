@@ -9,7 +9,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:id="@+id/myImage"
-        android:src="@drawable/zaida"
+        android:src="@drawable/noimage"
         android:layout_margin="5dp"
         android:cropToPadding="true" />
 

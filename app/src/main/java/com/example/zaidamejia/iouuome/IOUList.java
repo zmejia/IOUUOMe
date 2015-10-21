@@ -61,13 +61,14 @@ public class IOUList extends ActionBarActivity {
         // Tells the ListView what data to use
         theListView.setAdapter(theAdapter);
 
+
         theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                String creditor = "You selected " +
-                        String.valueOf(adapterView.getItemAtPosition(position));
+               UserData user = (UserData) adapterView.getItemAtPosition(position);
+               Integer creditor = user.getID();
 
-                Toast.makeText(IOUList.this, creditor, Toast.LENGTH_SHORT).show();
+                Toast.makeText(IOUList.this, creditor.toString(), Toast.LENGTH_SHORT).show();
 
             }
 
