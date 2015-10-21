@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:padding="5dp">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/myImage"
+        android:src="@drawable/zaida"
+        android:layout_margin="5dp"
+        android:cropToPadding="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Zaida Mejia"
+        android:id="@+id/creditor_name_textView"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignTop="@+id/myImage"
+        android:layout_toEndOf="@+id/myImage"
+        android:onClick="creditorIOU" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Total:"
+        android:id="@+id/total_textView"
+        android:layout_alignTop="@+id/total_amount_textView"
+        android:layout_alignEnd="@+id/creditor_name_textView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/total_amount_textView"
+        android:width="150dp"
+        android:layout_alignBottom="@+id/myImage"
+        android:layout_toEndOf="@+id/total_textView" />
+
+
+</RelativeLayout>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:padding="10dp"
+    android:background="#f5f5dc">
+
+    <ImageView
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:id="@+id/creditor_image"
+        android:background="#FFFFFF"
+        android:padding="5dp"
+        android:layout_weight="0.24"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/cancel_button" />
+
+    <TextView
+        android:layout_width="356dp"
+        android:layout_height="56dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Name"
+        android:id="@+id/creditor_name_textView"
+        android:paddingTop="10dp"
+        android:gravity="bottom"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/creditor_name_input"
+        android:layout_alignEnd="@+id/creditor_name_input" />
+
+    <EditText
+        android:layout_width="356dp"
+        android:layout_height="40dp"
+        android:id="@+id/creditor_name_input"
+        android:paddingBottom="5dp"
+        android:layout_weight="0.00"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/creditor_phone_number_TextView"
+        android:background="#FFFFFF" />
+
+    <TextView
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Phone Number"
+        android:id="@+id/creditor_phone_number_TextView"
+        android:layout_weight="0.00"
+        android:gravity="bottom"
+        android:paddingTop="10dp"
+        android:layout_above="@+id/creditor_phone_input"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="356dp"
+        android:layout_height="40dp"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/creditor_phone_input"
+        android:layout_weight="0.05"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="#FFFFFF"
+        android:clickable="true"
+        android:layout_above="@+id/creditor_email_textView"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Email"
+        android:id="@+id/creditor_email_textView"
+        android:layout_weight="0.07"
+        android:gravity="bottom"
+        android:paddingTop="10dp"
+        android:layout_alignEnd="@+id/creditor_email_input"
+        android:layout_above="@+id/creditor_email_input" />
+
+    <EditText
+        android:layout_width="356dp"
+        android:layout_height="40dp"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/creditor_email_input"
+        android:layout_weight="0.05"
+        android:layout_marginBottom="31dp"
+        android:layout_above="@+id/save_button"
+        android:layout_alignEnd="@+id/cancel_button"
+        android:background="#FFFFFF" />
+
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:id="@+id/save_button"
+        android:textColor="#3399ff"
+        android:background="@drawable/button_shape"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:id="@+id/cancel_button"
+        android:textColor="#3399ff"
+        android:background="@drawable/button_shape"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/creditor_phone_input" />
+
+
+
+</RelativeLayout>

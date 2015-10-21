@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+
+    <ImageView
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:id="@+id/creditorImage"
+        android:src="@drawable/zaida"
+        android:cropToPadding="true"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Name"
+        android:id="@+id/textView"
+        android:layout_alignTop="@+id/creditorImage"
+        android:layout_toEndOf="@+id/creditorImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Email"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/textView"
+        android:layout_toEndOf="@+id/creditorImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Phone"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/textView2"
+        android:layout_toEndOf="@+id/creditorImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Total:"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/textView3"
+        android:layout_toEndOf="@+id/creditorImage" />
+
+    <ListView
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:id="@+id/creditorListView"
+    android:layout_weight="0.57"
+    android:scrollingCache="false"
+    android:smoothScrollbar="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentBottom="true"
+    android:layout_marginTop="5dp"></ListView>
+
+
+</RelativeLayout>

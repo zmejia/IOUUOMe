@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp">
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/description"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/date"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/description"
+        android:paddingLeft="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/totalOwed"
+        android:layout_alignBottom="@+id/description"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/description"
+        android:paddingLeft="5dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:id="@+id/editCreditorbutton"
+        android:layout_below="@+id/totalOwed"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Paid"
+        android:id="@+id/paidCreditorButton"
+        android:layout_alignBottom="@+id/editCreditorbutton"
+        android:layout_toEndOf="@+id/editCreditorbutton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:id="@+id/deleteCreditorButton"
+        android:layout_alignBottom="@+id/paidCreditorButton"
+        android:layout_toEndOf="@+id/paidCreditorButton" />
+
+</RelativeLayout>
