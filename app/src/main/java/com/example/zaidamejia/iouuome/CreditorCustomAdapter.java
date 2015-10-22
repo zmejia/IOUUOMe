@@ -8,10 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by zaidamejia on 9/15/15.
- */
-
 
 public class CreditorCustomAdapter extends ArrayAdapter<String> {
 
@@ -50,8 +46,5 @@ public class CreditorCustomAdapter extends ArrayAdapter<String> {
         return theView;
 
     }
-
-
-
 
 }

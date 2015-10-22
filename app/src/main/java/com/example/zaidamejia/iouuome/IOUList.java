@@ -3,19 +3,15 @@ package com.example.zaidamejia.iouuome;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.text.Editable;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.Button;
 import android.widget.EditText;
-
 import android.app.Dialog;
 import android.database.Cursor;
 import android.app.AlertDialog;
-import android.util.Log;
 import java.util.List;
 
 
@@ -73,8 +69,6 @@ public class IOUList extends ActionBarActivity {
                 creditor_id_intent.putExtra("creditor_id", creditor_id);
                 startActivity(creditor_id_intent);
 
-                //Toast.makeText(IOUList.this, creditor_id.toString(), Toast.LENGTH_SHORT).show();
-
             }
 
         });
@@ -108,7 +102,7 @@ public class IOUList extends ActionBarActivity {
 
     //Dialog to enter new creditor information
     public void addNewCreditorButton(View v){
-       // final Dialog dialog = new Dialog(IOUList.this);
+
         dialog = new Dialog(IOUList.this);
         dialog.setTitle("New Creditor");
         dialog.setContentView(R.layout.new_creditor_layout);
@@ -130,8 +124,6 @@ public class IOUList extends ActionBarActivity {
 
         save_new_creditor_button = (Button) dialog.findViewById(R.id.save_button);
         saveNewCreditor();
-
-
 
     }
 
