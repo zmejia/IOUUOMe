@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.Button;
 import android.widget.EditText;
+
 import android.app.Dialog;
 import android.database.Cursor;
 import android.app.AlertDialog;
@@ -65,10 +66,14 @@ public class IOUList extends ActionBarActivity {
         theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-               UserData user = (UserData) adapterView.getItemAtPosition(position);
-               Integer creditor = user.getID();
+                Intent creditor_id_intent = new Intent(IOUList.this, CreditorList.class);
+                UserData user = (UserData) adapterView.getItemAtPosition(position);
+                Integer creditor_id = user.getID();
 
-                Toast.makeText(IOUList.this, creditor.toString(), Toast.LENGTH_SHORT).show();
+                creditor_id_intent.putExtra("creditor_id", creditor_id);
+                startActivity(creditor_id_intent);
+
+                //Toast.makeText(IOUList.this, creditor_id.toString(), Toast.LENGTH_SHORT).show();
 
             }
 

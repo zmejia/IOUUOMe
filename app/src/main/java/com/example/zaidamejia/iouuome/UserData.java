@@ -6,9 +6,9 @@ package com.example.zaidamejia.iouuome;
 public class UserData {
 
     //private variables
-    int _id;
-    String _name;
-    String _email;
+    private int _id;
+    private String _name;
+    private String _email;
 
     // Empty constructor
     public UserData(){
