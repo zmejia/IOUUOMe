@@ -60,12 +60,4 @@ public class UserData {
         this._email = email;
     }
 
-   /**
-    @Override
-    public String toString() {
-        return "UserInfo [name=" + _name + ", email=" + _email + "]";
-
-    }
-
-    **/
 }

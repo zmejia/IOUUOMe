@@ -36,7 +36,6 @@ public class CreditorList extends ActionBarActivity {
         creditorListView.setAdapter(creditorAdapter);
 
         ImageView image = (ImageView) findViewById(R.id.creditorImage);
-
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,12 +43,12 @@ public class CreditorList extends ActionBarActivity {
             }
         });
 
+    }
 
 
-
-
-
+    public void addIOUButton(){
 
     }
+
 
 }
