@@ -52,7 +52,7 @@
 
     <ListView
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="300dp"
     android:id="@+id/creditorListView"
     android:layout_weight="0.57"
     android:scrollingCache="false"
@@ -68,11 +68,12 @@
         android:text="Add IOU"
         android:id="@+id/add_iou_button"
         android:gravity="bottom|center"
-        android:layout_above="@+id/creditorListView"
-        android:layout_alignParentEnd="true"
         android:focusableInTouchMode="true"
-        android:layout_below="@+id/textView4"
-        android:onClick="addIOUButton" />
+        android:onClick="addIOUButton"
+        android:layout_below="@+id/creditorImage"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="44dp"
+        android:layout_alignEnd="@+id/creditorImage" />
 
 
 </RelativeLayout>

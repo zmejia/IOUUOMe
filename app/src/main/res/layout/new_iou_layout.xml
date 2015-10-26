@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="#f5f5dc"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Description"
+        android:id="@+id/textView5"
+        android:layout_weight="0.03"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/description_input"
+        android:layout_weight="0.22"
+        android:background="#FFFFFF"
+        android:password="true"
+        android:height="100dp"
+        android:layout_below="@+id/textView5"
+        android:layout_alignEnd="@+id/cancel_new_iou_button" />
+
+    <TextView
+        android:layout_width="363dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Date"
+        android:id="@+id/textView6"
+        android:layout_weight="0.03"
+        android:textStyle="bold"
+        android:paddingTop="10dp"
+        android:layout_below="@+id/description_input"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="36dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:background="@drawable/calendar"
+        android:id="@+id/date_button"
+        android:width="3dp"
+        android:paddingRight="10dp"
+        android:layout_toStartOf="@+id/date_text"
+        android:layout_alignBottom="@+id/date_text"
+        android:layout_alignEnd="@+id/total_text"
+        android:layout_alignTop="@+id/date_text" />
+
+    <TextView
+        android:layout_width="175dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/date_text"
+        android:background="#FFFFFF"
+        android:width="185dp"
+        android:height="20dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_shape"
+        android:textColor="#3399ff"
+        android:text="Cancel"
+        android:id="@+id/cancel_new_iou_button"
+        android:layout_gravity="right"
+        android:layout_weight="0.03"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/save_iou_button"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Total "
+        android:id="@+id/total_text"
+        android:paddingTop="10dp"
+        android:textStyle="bold"
+        android:paddingBottom="5dp"
+        android:layout_above="@+id/total_iou_input"
+        android:layout_alignStart="@+id/textView6" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/total_iou_input"
+        android:background="#FFFFFF"
+        android:height="50dp"
+        android:paddingTop="10dp"
+        android:layout_marginBottom="36dp"
+        android:layout_above="@+id/save_iou_button"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_shape"
+        android:textColor="#3399ff"
+        android:text="Save"
+        android:id="@+id/save_iou_button"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="33dp" />
+
+</RelativeLayout>
