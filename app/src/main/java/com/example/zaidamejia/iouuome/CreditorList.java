@@ -2,6 +2,7 @@ package com.example.zaidamejia.iouuome;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.Button;
@@ -22,8 +23,9 @@ public class CreditorList extends ActionBarActivity {
 
     ListAdapter creditorAdapter;
     ListView creditorListView;
-    EditText description_input;
+    EditText description_input, total_iou_input;
     TextView  date_text;
+    Button save_iou_button;
     Dialog iou_dialog;
     Calendar calendar = Calendar.getInstance();
 
@@ -74,18 +76,20 @@ public class CreditorList extends ActionBarActivity {
         description_input = (EditText) iou_dialog.findViewById(R.id.description_input);
         Button date_button = (Button) iou_dialog.findViewById(R.id.date_button);
         date_text = (TextView) iou_dialog.findViewById(R.id.date_text);
+        total_iou_input = (EditText) iou_dialog.findViewById(R.id.total_iou_input);
 
 
         date_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 new DatePickerDialog(CreditorList.this,listener, calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),
                         calendar.get(Calendar.DAY_OF_MONTH)).show();
-
             }
         });
 
+
+        save_iou_button = (Button) iou_dialog.findViewById(R.id.save_iou_button);
+        saveNewIOU();
 
     }
 
@@ -101,5 +105,31 @@ public class CreditorList extends ActionBarActivity {
 
         }
     };
+
+    //save creditor information
+    public void saveNewIOU(){
+        save_iou_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent add_iou_intent = new Intent(v.getContext(), AddIOUIntent.class);
+
+                String description = description_input.getText().toString();
+                String date = date_text.getText().toString();
+                String total = total_iou_input.getText().toString();
+
+                add_iou_intent.putExtra("iou_info", new String[]{description, date, total});
+
+                startService(add_iou_intent);
+
+                //code to return to an updated list
+                iou_dialog.cancel();
+            }
+        });
+    }
+
+
+
+
 
 }

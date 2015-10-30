@@ -35,6 +35,7 @@
             </intent-filter>
         </activity>
         <service android:name="DatabaseMethods"/>
+        <service android:name="AddIOUIntent"/>
         <service android:name="MyIntentService" />
 
 

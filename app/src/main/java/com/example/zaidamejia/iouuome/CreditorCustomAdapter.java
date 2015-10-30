@@ -6,15 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.List;
 
-public class CreditorCustomAdapter extends ArrayAdapter<String> {
 
-    public CreditorCustomAdapter(Context context, String[] values){
+public class CreditorCustomAdapter extends ArrayAdapter<EntryData> {
+
+    public CreditorCustomAdapter(Context context, List<EntryData> values){
 
         super(context, R.layout.creditor_row_layout, values);
+
     }
+
 
 
 
@@ -26,25 +31,26 @@ public class CreditorCustomAdapter extends ArrayAdapter<String> {
 
         // inflate takes the resource to load, the parent that the resource may be
         // loaded into and true or false if we are loading into a parent view.
-        View theView = theInflater.inflate(R.layout.creditor_row_layout, parent, false);
+        convertView = (RelativeLayout) theInflater.inflate(R.layout.creditor_row_layout, null);
 
         // We retrieve the text from the array
-        String tvShow = getItem(position);
+        EntryData entryInfo = (EntryData) getItem(position);
 
         // Get the TextView we want to edit
-        TextView theTextView = (TextView) theView.findViewById(R.id.creditor_name_textView);
+        TextView description = (TextView) convertView.findViewById(R.id.description);
 
-        // Put the next TV Show into the TextView
-        theTextView.setText(tvShow);
+        // Put the next description into the TextView
+        description.setText(entryInfo.getDescription());
 
         // Get the ImageView in the layout
-        ImageView theImageView = (ImageView) theView.findViewById(R.id.myImage);
+        ImageView theImageView = (ImageView) convertView.findViewById(R.id.myImage);
 
         // We can set a ImageView like this
         theImageView.setImageResource(R.drawable.noimage);
 
-        return theView;
+        return convertView;
 
     }
+
 
 }

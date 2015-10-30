@@ -1,18 +1,12 @@
 package com.example.zaidamejia.iouuome;
 
-/**
- * Created by zaidamejia on 8/26/15.
- */
+
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.Cursor;
-import android.util.Log;
-
-import java.sql.Array;
-
 
 public class DatabaseHelper extends SQLiteOpenHelper{
 
@@ -22,6 +16,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public static final String COL_2 = "NAME";
     public static final String COL_3 = "PHONE";
     public static final String COL_4 = "EMAIL";
+
+    public static final String IOU_TABLE = "iou_table";
+    public static final String IOU_ID = "ID";
+    public static final String IOU_DESCRIPTION = "DESCRIPTION";
+    public static final String IOU_DATE = "DATE";
+    public static final String IOU_TOTAL = "TOTAL";
+
 
 
     private static final String TAG = "CreditorName";
@@ -35,12 +36,18 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT,PHONE TEXT,EMAIL INTEGER)");
+        db.execSQL("create table " + IOU_TABLE +
+                "(" + IOU_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + IOU_DESCRIPTION + " TEXT,"
+                + IOU_DATE + " TEXT," + IOU_TOTAL + " INTEGER)");
+
+
     }
 
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS "+IOU_TABLE);
         onCreate(db);
     }
 
@@ -63,16 +70,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public Cursor getCreditorInfo(){
 
         SQLiteDatabase db = this.getWritableDatabase();
-/**        Cursor result = db.rawQuery("select NAME from " + TABLE_NAME, null);
-
-        Log.i(TAG, "Here");
-**/
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_NAME;
 
-        Cursor result = db.rawQuery ( selectQuery, null );
-
-
+        Cursor result = db.rawQuery(selectQuery, null);
 
         return result;
 
@@ -89,4 +90,20 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return cursor.getCount();
     }
 
+    //Inserting new iou data
+    public boolean insertNewIOUData(String description, String date, String total){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(IOU_DESCRIPTION, description);
+        contentValues.put(IOU_DATE, date);
+        contentValues.put(IOU_TOTAL, total);
+        long result = db.insert(IOU_TABLE, null, contentValues);
+        if(result == -1)
+            return false;
+        else
+            return true;
+
     }
+
+
+}
