@@ -7,6 +7,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.Cursor;
+import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
 
@@ -26,6 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
 
     private static final String TAG = "CreditorName";
+    private static final String TAG1 = "Count";
 
 
     public DatabaseHelper(Context context) {
@@ -83,7 +85,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public int getDataCount() {
 
         SQLiteDatabase db = this.getWritableDatabase();
-        String countQuery = "SELECT  * FROM " + TABLE_NAME;
+        String countQuery = "SELECT * FROM " + TABLE_NAME;
         Cursor cursor = db.rawQuery(countQuery, null);
 
         // return count
@@ -102,6 +104,30 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             return false;
         else
             return true;
+
+    }
+
+    // Getting dataCount
+    public int getIOUDataCount() {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String iouCountQuery = "SELECT  * FROM " + IOU_TABLE;
+        Cursor iouCursor = db.rawQuery(iouCountQuery, null);
+        Integer count = iouCursor.getCount();
+        //Log.i(TAG1, count.toString());
+        return count;
+    }
+
+    //Display all creditor
+    public Cursor getIOUInfo(){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + IOU_TABLE;
+
+        Cursor result = db.rawQuery(selectQuery, null);
+
+        return result;
 
     }
 

@@ -21,8 +21,6 @@ public class CreditorCustomAdapter extends ArrayAdapter<EntryData> {
     }
 
 
-
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -42,15 +40,20 @@ public class CreditorCustomAdapter extends ArrayAdapter<EntryData> {
         // Put the next description into the TextView
         description.setText(entryInfo.getDescription());
 
-        // Get the ImageView in the layout
-        ImageView theImageView = (ImageView) convertView.findViewById(R.id.myImage);
+        // Get the TextView we want to edit
+        TextView date = (TextView) convertView.findViewById(R.id.date);
 
-        // We can set a ImageView like this
-        theImageView.setImageResource(R.drawable.noimage);
+        // Put the next date into the TextView
+        date.setText(entryInfo.getDate());
+
+        // Get the TextView we want to edit
+        TextView total = (TextView) convertView.findViewById(R.id.totalOwed);
+
+        // Put the next total into the TextView
+        total.setText(entryInfo.getTotal());
+
 
         return convertView;
 
     }
-
-
 }

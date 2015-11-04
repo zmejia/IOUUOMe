@@ -3,8 +3,10 @@ package com.example.zaidamejia.iouuome;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.DatePicker;
@@ -14,9 +16,11 @@ import android.widget.ImageView;
 import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.Toast;
+import android.util.Log;
 
-
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 
 public class CreditorList extends ActionBarActivity {
@@ -27,7 +31,10 @@ public class CreditorList extends ActionBarActivity {
     TextView  date_text;
     Button save_iou_button;
     Dialog iou_dialog;
+    DatabaseHelper iouDb;
     Calendar calendar = Calendar.getInstance();
+
+    private static final String TAG = "IOUListCount";
 
 
 
@@ -36,25 +43,65 @@ public class CreditorList extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.creditor_iou_list);
 
-        final Integer id = getIntent().getIntExtra("creditor_id",0);
+        iouDb = new DatabaseHelper(this);
 
-        String[]  creditors = {};
-        //converter
-        //creditorAdapter = new CustomAdapter(this, creditors);
+        final Integer creditor_id = getIntent().getIntExtra("creditor_id",0);
+
 
         creditorListView = (ListView) findViewById(R.id.creditorListView);
 
         // Tells the ListView what data to use
         creditorListView.setAdapter(creditorAdapter);
 
+
         ImageView image = (ImageView) findViewById(R.id.creditorImage);
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(CreditorList.this, id.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(CreditorList.this, creditor_id.toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
+
+        iouList(creditor_id);
+
+
+    }
+
+    //Displays List of iou list for selected creditor
+    public void iouList(Integer creditor_id){
+
+        Integer iou_count = iouDb.getIOUDataCount();
+
+        List<EntryData> iou_data = viewALlIOU();
+
+        //converter
+        CreditorCustomAdapter iouAdapter = new CreditorCustomAdapter(this, iou_data);
+
+        ListView iouListView = (ListView) findViewById(R.id.creditorListView);
+        // Tells the ListView what data to use
+        iouListView.setAdapter(iouAdapter);
+       // Log.i(TAG, "pass");
+
+    }
+
+    public List<EntryData> viewALlIOU() {
+        Cursor cursor = iouDb.getIOUInfo();
+        List<EntryData> iouList = new ArrayList<EntryData>();
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                EntryData data = new EntryData();
+                data.setID(Integer.parseInt(cursor.getString(0)));
+                data.setDescription(cursor.getString(1));
+                data.setDate(cursor.getString(2));
+                data.setTotal(cursor.getString(3));
+                // Adding entry to list
+                iouList.add(data);
+            } while (cursor.moveToNext());
+        }
+        // returnS entry list
+        return iouList;
     }
 
 
