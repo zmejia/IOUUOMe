@@ -69,7 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     }
 
     //Display all creditors
-    public Cursor getCreditorInfo(){
+    public Cursor getAllCreditorsInfo(){
 
         SQLiteDatabase db = this.getWritableDatabase();
         // Select All Query
@@ -78,6 +78,29 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         Cursor result = db.rawQuery(selectQuery, null);
 
         return result;
+
+    }
+
+    //query creditor data by specified id
+    public UserData getCreditorInfo(int creditorID){
+        UserData data = new UserData();
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Select Query
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME + " WHERE ID =" + creditorID;
+
+        Cursor result = db.rawQuery(selectQuery, null);
+
+        if (result.moveToFirst()) {
+            do {
+                data.setID(Integer.parseInt(result.getString(0)));
+                data.setName(result.getString(1));
+                data.setPhone(result.getString(2));//phone
+                data.setEmail(result.getString(3));
+                ///SET PHONE NUMBER OR EMAIL CHECK WHICH
+            } while (result.moveToNext());
+        }
+
+        return data;
 
     }
 

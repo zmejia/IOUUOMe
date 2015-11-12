@@ -66,7 +66,7 @@ public class IOUList extends ActionBarActivity {
                 UserData user = (UserData) adapterView.getItemAtPosition(position);
                 Integer creditor_id = user.getID();
 
-                creditor_id_intent.putExtra("creditor_id", creditor_id);
+               creditor_id_intent.putExtra("creditor_id", creditor_id);
                 startActivity(creditor_id_intent);
 
             }
@@ -79,7 +79,7 @@ public class IOUList extends ActionBarActivity {
 
     // Getting All User data
     public List<UserData> viewALlCreditors() {
-        Cursor cursor = myDb.getCreditorInfo();
+        Cursor cursor = myDb.getAllCreditorsInfo();
         List<UserData> contactList = new ArrayList<UserData>();
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {

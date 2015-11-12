@@ -14,6 +14,7 @@ public class AddIOUIntent extends IntentService {
     String date;
     String total;
     String test;
+    Integer creditorId;
 
     private static final String TAG = "DBIOUTest";
     private static final String TAG1 = "ADDIOU";
@@ -32,19 +33,21 @@ public class AddIOUIntent extends IntentService {
         description = iou_info[0];
         date = iou_info[1];
         total = iou_info[2];
+        creditorId = Integer.parseInt(iou_info[3]);
 
-        test = description + " " + date + " " + total;
-
-        addNewIOU();
+        test = description + " " + date + " " + total;// + " "+ creditorId;
         Log.i(TAG, test);
+
+        addNewIOU(creditorId);
+
 
     }
 
     // Insert new creditor data into database
-    public void addNewIOU(){
+    public void addNewIOU(int creditorId){
 
         boolean isInserted = myDb.insertNewIOUData(description, date, total);
-        Log.i(TAG1, test);
+        //Log.i(TAG1, test);
 
         if (isInserted)
             Toast.makeText(getApplicationContext(), "Data Inserted", Toast.LENGTH_LONG).show();

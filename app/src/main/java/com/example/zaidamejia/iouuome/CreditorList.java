@@ -33,6 +33,7 @@ public class CreditorList extends ActionBarActivity {
     Dialog iou_dialog;
     DatabaseHelper iouDb;
     Calendar calendar = Calendar.getInstance();
+    UserData creditorData = new UserData();
 
     private static final String TAG = "IOUListCount";
 
@@ -46,6 +47,7 @@ public class CreditorList extends ActionBarActivity {
         iouDb = new DatabaseHelper(this);
 
         final Integer creditor_id = getIntent().getIntExtra("creditor_id",0);
+        creditorData = iouDb.getCreditorInfo(creditor_id);
 
 
         creditorListView = (ListView) findViewById(R.id.creditorListView);
@@ -72,7 +74,6 @@ public class CreditorList extends ActionBarActivity {
     public void iouList(Integer creditor_id){
 
         Integer iou_count = iouDb.getIOUDataCount();
-
         List<EntryData> iou_data = viewALlIOU();
 
         //converter
@@ -164,8 +165,11 @@ public class CreditorList extends ActionBarActivity {
                 String description = description_input.getText().toString();
                 String date = date_text.getText().toString();
                 String total = total_iou_input.getText().toString();
+                Integer creditorId = creditorData.getID();
 
-                add_iou_intent.putExtra("iou_info", new String[]{description, date, total});
+                String id = creditorId.toString();
+
+                add_iou_intent.putExtra("iou_info", new String[]{description, date, total, id});
 
                 startService(add_iou_intent);
 
